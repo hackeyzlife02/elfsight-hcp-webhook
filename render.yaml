@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: elfsight-webhook
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 0 main:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: HCP_API_KEY
+        sync: false
+      - key: HCP_BASE_URL
+        value: https://api.housecallpro.com
+      - key: HCP_LEAD_SOURCE
+        value: Website
+      - key: HCP_ASSIGNED_EMPLOYEE_ID
+        value: pro_dabb388b3e684c618867cd4ec0d12930
+      - key: HCP_LEAD_TAG
+        value: ""
+      - key: HCP_WEBSITE_TAG
+        value: ""
+      - key: LOG_LEVEL
+        value: INFO
+      - key: DEFAULT_AREA_CODE
+        value: "415"
