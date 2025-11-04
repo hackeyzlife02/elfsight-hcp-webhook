@@ -24,3 +24,5 @@ services:
         value: INFO
       - key: DEFAULT_AREA_CODE
         value: "415"
+      - key: DEFAULT_STATE
+        value: "CA"

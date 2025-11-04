@@ -27,6 +27,7 @@ class Config:
     # Default Values
     DEFAULT_AREA_CODE: str = os.getenv("DEFAULT_AREA_CODE", "415")
     DEFAULT_TIMEZONE: str = os.getenv("DEFAULT_TIMEZONE", "America/Los_Angeles")
+    DEFAULT_STATE: str = os.getenv("DEFAULT_STATE", "CA")  # Default state for addresses
 
     # Rate Limiting
     API_RATE_LIMIT_DELAY: float = float(os.getenv("API_RATE_LIMIT_DELAY", "2.0"))

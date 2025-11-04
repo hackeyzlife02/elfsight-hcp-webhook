@@ -199,7 +199,7 @@ class LeadCreator:
                 parsed_address = {
                     "street": form_data.get("street"),
                     "city": form_data.get("city"),
-                    "state": form_data.get("state"),  # May be None
+                    "state": form_data.get("state") or Config.DEFAULT_STATE,  # Default to CA
                     "zip": form_data.get("zip")
                 }
             else:
@@ -437,8 +437,8 @@ class LeadCreator:
             address["street_line_2"] = parsed_address["street_line_2"]
         if parsed_address.get("city"):
             address["city"] = parsed_address["city"]
-        if parsed_address.get("state"):
-            address["state"] = parsed_address["state"]
+        # Always set state, default to CA if not provided
+        address["state"] = parsed_address.get("state") or Config.DEFAULT_STATE
         if parsed_address.get("zip"):
             address["zip"] = parsed_address["zip"]
         if parsed_address.get("country"):
@@ -548,8 +548,8 @@ class LeadCreator:
             address_data["street_line_2"] = address["street_line_2"]
         if address.get("city"):
             address_data["city"] = address["city"]
-        if address.get("state"):
-            address_data["state"] = address["state"]
+        # Always set state, default to CA if not provided
+        address_data["state"] = address.get("state") or Config.DEFAULT_STATE
         if address.get("zip"):
             address_data["zip"] = address["zip"]
         if address.get("country"):
